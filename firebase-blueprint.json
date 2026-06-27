@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "booking_request": {
+      "title": "BookingRequest",
+      "description": "Represents a customer's booking or inquiry request for an event",
+      "type": "object",
+      "properties": {
+        "customerName": {
+          "type": "string",
+          "description": "The name of the customer making the request"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The phone number of the customer"
+        },
+        "emailAddress": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address of the customer"
+        },
+        "eventType": {
+          "type": "string",
+          "enum": ["Wedding", "Corporate Summit", "Birthday Party", "Concert/Live Show", "Sangeet / Mehendi", "Anniversary", "Other"],
+          "description": "The type of event being requested"
+        },
+        "eventDate": {
+          "type": "string",
+          "description": "The planned date of the event"
+        },
+        "location": {
+          "type": "string",
+          "description": "The location where the event is to be held"
+        },
+        "budget": {
+          "type": "string",
+          "description": "Estimated budget of the event"
+        },
+        "additionalRequirements": {
+          "type": "string",
+          "description": "Additional notes, details, or requirements"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["Pending", "Contacted", "Confirmed"],
+          "description": "The approval or coordination state of the request"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of when the request was submitted"
+        }
+      },
+      "required": ["customerName", "phoneNumber", "emailAddress", "eventDate", "location", "budget", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "booking_requests/{requestId}": {
+      "schema": "booking_request",
+      "description": "Customer inquiry and booking requests for events"
+    }
+  }
+}

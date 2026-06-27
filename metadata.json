@@ -1,0 +1,6 @@
+{
+  "name": "SLV Events",
+  "description": "Real-Time Event Day Operations Dashboard with AI suggestions and role-based tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

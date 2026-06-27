@@ -1,0 +1,98 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net: default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper to validate document IDs to prevent injection of huge string resources
+    function isValidId(id) {
+      return id is string && id.size() <= 128;
+    }
+
+    // 2. Booking Requests collection
+    match /booking_requests/{requestId} {
+      allow read: if true;
+      allow write: if isValidId(requestId);
+    }
+
+    // Events collection
+    match /events/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Tasks collection
+    match /tasks/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Inventory collection
+    match /inventory/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Staff collection
+    match /staff/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Vendors collection
+    match /vendors/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Finance collection
+    match /finance/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Issues collection
+    match /issues/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Comments collection
+    match /comments/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Attachments collection
+    match /attachments/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Activity Logs collection
+    match /activity_logs/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Notifications collection
+    match /notifications/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // Users collection
+    match /users/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+
+    // WhatsApp Logs collection
+    match /whatsapp_logs/{id} {
+      allow read: if true;
+      allow write: if isValidId(id);
+    }
+  }
+}
